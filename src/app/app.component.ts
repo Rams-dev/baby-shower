@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy{
   title = 'baby-shower';
   soundUrl = 'assets/audio.mpeg';
   bottonVol:boolean = true
@@ -18,12 +18,12 @@ export class AppComponent implements OnInit{
   pararMusica:boolean = false
 
   constructor(){
-
   }
 
 
   ngOnInit(): void {
     this.audio = new Audio(this.soundUrl)
+    document.addEventListener('visibilitychange', this.handleVisibilityChange.bind(this));
 
     setTimeout(() => {
       this.bottonVol = false
@@ -42,6 +42,33 @@ export class AppComponent implements OnInit{
 
     this.pararMusica = !this.pararMusica
 
+  }
+
+  handleVisibilityChange(): void {
+    console.log("aaaa");
+    
+    if (document.hidden){
+      if(this.pararMusica==true){
+        this.audio.pause()
+      }
+      
+    }else{
+      this.audio.play()
+    
+    }
+    this.pararMusica = !this.pararMusica
+
+    
+
+    
+    
+  }
+
+  
+
+  ngOnDestroy(): void {
+    this.audio.stop()
+    // document.addEventListener('visibilitychange', this.handleVisibilityChange.bind(this));
   }
 
 }

@@ -22,7 +22,6 @@ body{
 
 .buttons > button{
     border-color:#5b0b6a;
-    
     padding: 5px;
     
 }
@@ -177,7 +176,8 @@ body{
 
 
 .text-information{
-    width: 100%;
+    margin: auto;
+    width: 90%;
     text-align: center;
 }
 
