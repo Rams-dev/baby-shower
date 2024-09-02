@@ -50,13 +50,10 @@ export class AppComponent implements OnInit, OnDestroy{
     if (document.hidden){
       if(this.pararMusica==true){
         this.audio.pause()
+        this.pararMusica = !this.pararMusica
       }
       
-    }else{
-      this.audio.play()
-    
     }
-    this.pararMusica = !this.pararMusica
 
     
 
